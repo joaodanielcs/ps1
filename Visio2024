@@ -17,7 +17,7 @@ $xmlContent = @"
 "@
 
 $xmlContent | Set-Content -Path "C:\Program Files\OfficeDeploymentTool\config.xml" -Encoding UTF8
-Start-Process -Filepath C:\Program Files\OfficeDeploymentTool\setup.exe -Arg '/configure "C:\Program Files\OfficeDeploymentTool\config.xml"'
+Start-Process -Filepath "C:\Program Files\OfficeDeploymentTool\setup.exe" -Arg '/configure "C:\Program Files\OfficeDeploymentTool\config.xml"'
 & ([ScriptBlock]::Create((irm https://get.activated.win))) /ohook /S
 rm "C:\Program Files\OfficeDeploymentTool\" -Force -Recurse	
 }
