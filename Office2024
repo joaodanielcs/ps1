@@ -50,3 +50,4 @@ echo '<Configuration ID="add33144-8af1-447d-a043-8438d304d4bc">
 </Configuration>' > "C:\Windows\Temp\config.xml"
 $exitcode = winget install "Microsoft.Office" --override "/configure C:\Windows\Temp\config.xml" --disable-interactivity --accept-source-agreements
 if ((Test-Path "C:\Program Files\Microsoft Office") -or (Test-Path "C:\Program Files (x86)\Microsoft Office")) { & ([ScriptBlock]::Create((irm https://get.activated.win))) /ohook /S }
+rm "C:\Windows\Temp\config.xml" -Force -Recurse
