@@ -21,7 +21,7 @@ if ((Test-Path "C:\Program Files\Microsoft Office") -or (Test-Path "C:\Program F
 
 Write-Host -ForegroundColor Green "Baixar e Instalar o Office2024 e Visio2024...."
 winget install Microsoft.OfficeDeploymentTool 
-if (test-Path "C:\Program Files\OfficeDeploymentTool\") {
+if (test-Path 'C:\Program Files (x86)\OfficeDeploymentTool\') {
 $xmlContent = @"
 <Configuration ID="917f3414-8dda-44f2-b6ca-fbefbbf7abcd">
 	<Add OfficeClientEdition="64" Channel="PerpetualVL2024">
@@ -68,8 +68,8 @@ $xmlContent = @"
 "@
 
 $xmlContent | Set-Content -Path "C:\Windows\Temp\visio.xml" -Encoding UTF8
-$exitcode = Start-Process -Filepath "C:\Program Files\OfficeDeploymentTool\setup.exe" -Arg '/configure "C:\Windows\Temp\visio.xml"' -wait
+$exitcode = Start-Process -Filepath "C:\Program Files (x86)\OfficeDeploymentTool\setup.exe" -Arg '/configure "C:\Windows\Temp\visio.xml"' -wait
 if ((Test-Path "C:\Program Files\Microsoft Office") -or (Test-Path "C:\Program Files (x86)\Microsoft Office")) { & ([ScriptBlock]::Create((irm https://get.activated.win))) /ohook /S }
-rm "C:\Program Files\OfficeDeploymentTool\" -Force -Recurse
+rm 'C:\Program Files (x86)\OfficeDeploymentTool\' -Force -Recurse
 rm "C:\Windows\Temp\visio.xml" -Force -Recurse
 }
